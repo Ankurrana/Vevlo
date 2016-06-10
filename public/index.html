@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="vevlo" ng-controller="mainController">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"></meta>
+    <head>
+        <title>{{ title }}</title>
+        <script src="public/node_modules/angular/angular.min.js"></script>
+        <script src="public/js/main.js"></script>
+        <script src="public/js/mainController.js"></script>
+        <script src="public/js/helper.js"></script>
+        <script src="public/node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="public/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="http://vjs.zencdn.net/5.10.4/video.js"></script>
+        <link href="http://vjs.zencdn.net/5.10.4/video-js.css" rel="stylesheet">
+        <script>
+            $(window).keypress(function(e) {   
+             var video = document.getElementById("mainPlayer");
+              if (e.keyCode == 32) {
+                e.preventDefault();
+                if (video.paused == true)
+                  video.play();
+                else
+                  video.pause();
+              }
+            });
+            $(document).ready(function(){
+                var video = document.getElementById("mainPlayer");
+                video.volume = 0.3;
+            })
+        </script>
+        <link rel="stylesheet" type="text/css" href="public/node_modules/bootstrap/dist/css/bootstrap.min.css"></link>
+    </head>
+    <style>
+        @media(max-width:1267px){
+                .affix {
+                position: static;
+                width: auto;
+                top: 0;
+            }
+        }
+      /*  video{
+            display: block;
+            position:relative;
+        }*/
+    </style>
+    <body  class="container-fluid">
+        <div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <h2>
+                        {{ currentMovie }}
+                    </h2>
+                </div>
+            </div>
+        
+            <div class="row">
+                    <div class="afix">
+                        <div class="col-md-6 col-sm-12 col-xs-12">                                                  
+                            <div class="embed-responsive embed-responsive-4by3">                                    
+                                    <video class="embed-responsive-item video-js vjs-default-skin" id="mainPlayer"
+                                       controls="controls" >
+                                        <source autoplay="false" src="{{movies.selectedMovie}}" />
+                                    </video>
+                            </div>                           
+                        </div>
+                    </div>                        
+                    <div class="col-md-5 col-sm-12 col-xs-12">
+                        <div>
+                            <form>
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Search</label>
+                                <input type="search" ng-change="search()" class="form-control" id="exampleInputEmail1" placeholder="Search" ng-model="searchQuery">
+                              </div>  
+                            </form>
+                        </div>
+                        <div >
+                            <div ng-repeat="movie in movies">
+                               <a href="#" ng-click="movie.run()" id="{{movie.getId()}}">{{ movie.getName() }}</a>
+                            </div>
+                        </div>
+                </div>
+            </div>   
+        </div>
+    </body>
+</html>
