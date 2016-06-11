@@ -34,6 +34,23 @@ app.param('video', function(req, res, next, video) {
   next();
 });
 
+var extTypes = {
+    ".mp4": "video/mp4",
+    ".flv"   : "video/x-flv",
+    '.webm' : 'video/webm',
+    '.mkv' : 'video/webm'
+}
+
+
+function getExt(path) {
+    var i = path.lastIndexOf('.');
+    return (i < 0) ? '' : path.substr(i);
+}
+
+function getContentType (ext) {
+    return extTypes[ext.toLowerCase()] || 'application/octet-stream';
+}
+
 app.use('/video/:video',function(req,res){	
 	var videoId = req.video;
 	var videoPath = path.resolve(files[videoId]);
@@ -46,6 +63,8 @@ app.use('/video/:video',function(req,res){
 	 	console.log('Browser din\'t request any range');
 		res.setHeader('Content-Length',stat.size);
 		res.setHeader('Accept-Ranges','bytes');
+        console.log(getExt(videoPath));
+        res.setHeader('Content-Type', getContentType(getExt(videoPath)));
         var VFile = fs.createReadStream(videoPath,{'start':start,'end':end});
         VFile.pipe(res);
         return null;
@@ -63,7 +82,7 @@ app.use('/video/:video',function(req,res){
     }
 
 
-	res.setHeader('Content-Type','video/webm')
+	res.setHeader('Content-Type',getContentType(getExt(videoPath)))
 	res.setHeader('Content-Range','bytes '+ start + '-' + end + '/' + stat.size );
 	res.setHeader('Accept-Ranges','bytes');
 	res.setHeader('Content-Length',end-start+1);

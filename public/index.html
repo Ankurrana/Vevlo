@@ -3,15 +3,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"></meta>
     <head>
         <title>{{ title }}</title>
+        <script src="public/node_modules/video.js/dist/video.min.js"></script>
+        <link href="public/node_modules/video.js/dist/video-js.min.css" rel="stylesheet">
         <script src="public/node_modules/angular/angular.min.js"></script>
+         <script src="public/node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="public/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="public/js/main.js"></script>
         <script src="public/js/mainController.js"></script>
         <script src="public/js/helper.js"></script>
-        <script src="public/node_modules/jquery/dist/jquery.min.js"></script>
-        <script src="public/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="http://vjs.zencdn.net/5.10.4/video.js"></script>
-        <link href="http://vjs.zencdn.net/5.10.4/video-js.css" rel="stylesheet">
+       
+        
         <script>
+            videojs.options.flash.swf = "public/video-js.swf"
             $(window).keypress(function(e) {   
              var video = document.getElementById("mainPlayer");
               if (e.keyCode == 32) {
@@ -56,10 +59,19 @@
                     <div class="afix">
                         <div class="col-md-6 col-sm-12 col-xs-12">                                                  
                             <div class="embed-responsive embed-responsive-4by3">                                    
-                                    <video class="embed-responsive-item video-js vjs-default-skin" id="mainPlayer"
+                                    <!-- <video class="embed-responsive-item video-js vjs-default-skin" id="mainPlayer"
                                        controls="controls" >
                                         <source autoplay="false" src="{{movies.selectedMovie}}" />
-                                    </video>
+                                    </video> -->
+                                    <video id="mainPlayer" class="embed-responsive-item video-js vjs-default-skin video-js" controls preload="auto" 
+                                       data-setup='{}' width="320" height="264">
+                                        <source src="video/10" type="video/x-flv">
+                                        <p class="vjs-no-js">
+                                          To view this video please enable JavaScript, and consider upgrading to a web browser that
+                                          <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                                        </p>
+                                      </video>
+
                             </div>                           
                         </div>
                     </div>                        

@@ -9,6 +9,7 @@ var config = {
 		'.mp4',
 		'.mkv',
 		'.webm',
+		'.flv'
 	]
 }
 

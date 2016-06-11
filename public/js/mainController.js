@@ -17,6 +17,7 @@ app.controller('mainController',['$scope','$http',function($scope,$http){
 		constructor(id,name){
 			this.name = name;
 			this.id = id;
+			this.mime = getContentType(getExt(this.name));
 		}
 		getName(){
 			return this.name;
@@ -25,10 +26,19 @@ app.controller('mainController',['$scope','$http',function($scope,$http){
 			return this.id;
 		}
 		run(){
-			var video = document.getElementById('mainPlayer');
-			video.src = "video/" + this.id;
+			var video = videojs('mainPlayer');
+			this.toString();
+			video.src({ type: this.mime, src: "video/" + this.id });
+			console.log(video.currentSrc());
+			console.log(video.currentType());
+
 			$scope.currentMovie = this.name;
 			video.play();
+		}
+		toString(){
+			console.log(this.name);
+			console.log(this.id);
+			console.log(this.mime);
 		}
 	}
 

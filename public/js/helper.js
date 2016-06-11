@@ -69,6 +69,23 @@ var test = function(){
 	console.log(similarityScore(b,'S02'));
 }
 
+
+var extTypes = {
+    ".mp4": "video/mp4",
+    ".flv"   : "video/x-flv",
+    '.webm' : 'video/webm',
+    '.mkv' : 'video/webm'
+}
+
+
+function getExt(path) {
+    var i = path.lastIndexOf('.');
+    return (i < 0) ? '' : path.substr(i);
+}
+
+function getContentType (ext) {
+    return extTypes[ext.toLowerCase()] || 'application/octet-stream';
+}
 // class TrieItem{
 // 	constructor(str,serial){
 // 		this.str = str;
