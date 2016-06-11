@@ -31,16 +31,16 @@
     </head>
     <style>
         @media(max-width:1267px){
-                .affix {
+            .affix {
                 position: static;
                 width: auto;
                 top: 0;
             }
         }
-      /*  video{
+        video{
             display: block;
             position:relative;
-        }*/
+        }
     </style>
     <body  class="container-fluid">
         <div>
@@ -72,7 +72,7 @@
                               </div>  
                             </form>
                         </div>
-                        <div >
+                        <div>
                             <div ng-repeat="movie in movies">
                                <a href="#" ng-click="movie.run()" id="{{movie.getId()}}">{{ movie.getName() }}</a>
                             </div>
