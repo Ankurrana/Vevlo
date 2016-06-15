@@ -71,6 +71,13 @@ app.use('/video/:video',function(req,res){
  	var VFile = fs.createReadStream(videoPath,{'start':start,'end':end});
 	res.status(206)
 	VFile.pipe(res);
+});
+
+
+app.use('/download/:video',function(req,res){
+    var videoId = req.video;
+    var videoPath = path.resolve(files[videoId]);
+    res.download(videoPath,files[videoId].split('/').slice(-1)[0]);
 })
 
 var getFiles = function(_path, files){
@@ -94,6 +101,9 @@ var setup = function(){
 		getFiles(directoriesToCheck[i],files);
 	}
 }
+
+
+
 
 
 app.get('/videos',function(req,res){

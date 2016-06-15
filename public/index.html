@@ -76,6 +76,7 @@
                         <div>
                             <div ng-repeat="movie in movies">
                                <a href="#" ng-click="movie.run()" id="{{movie.getId()}}">{{ movie.getName() }}</a>
+                               <a class="primary" ng-click="movie.download()"><span class="glyphicon glyphicon-download"></span></a>
                             </div>
                         </div>
                 </div>

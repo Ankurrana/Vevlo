@@ -30,6 +30,13 @@ app.controller('mainController',['$scope','$http',function($scope,$http){
 			$scope.currentMovie = this.name;
 			video.play();
 		}
+		download(){
+			$http.get('download/' + this.id).then(function(data){
+				console.log('your download should be started!');
+			},function(err){
+				console.log(err);
+			})
+		}
 	}
 
 	function init(){
