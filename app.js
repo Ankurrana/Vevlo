@@ -78,6 +78,8 @@ app.use('/download/:video',function(req,res){
     var videoId = req.video;
     var videoPath = path.resolve(files[videoId]);
     var VFile = fs.createReadStream(videoPath);
+    // res.setHeader('Content-Type','video/webm');
+    // console.log('A Download Request is recieved!');
     res.download(videoPath,files[videoId].split('/').slice(-1)[0]);
 })
 
