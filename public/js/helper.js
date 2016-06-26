@@ -1,4 +1,5 @@
 'use strict'
+
 function similarityScore(a,b){
 	a = a.toLowerCase();
 	b = b.toLowerCase();
@@ -61,14 +62,21 @@ function LCS(a, b) {
 }
 
 
-var test = function(){
-	var a = processString("Avengers.Age.of.Ultron.2015.720p.BluRay.x264.YIFY.mp4");
-	var b = processString("Rick and Morty S02E01.webm");
+// var test = function(){
+// 	var a = processString("Avengers.Age.of.Ultron.2015.720p.BluRay.x264.YIFY.mp4");
+// 	var b = processString("Rick and Morty S02E01.webm");
 
-	console.log(similarityScore(a,'S02'));
-	console.log(similarityScore(b,'S02'));
+// 	console.log(similarityScore(a,'S02'));
+// 	console.log(similarityScore(b,'S02'));
+// }
+
+
+function test(a,b){
+	console.log(similarityScore(a,b));
 }
 
+
+test("ansnkur","asnk");
 // class TrieItem{
 // 	constructor(str,serial){
 // 		this.str = str;

@@ -77,6 +77,7 @@ app.use('/video/:video',function(req,res){
 app.use('/download/:video',function(req,res){
     var videoId = req.video;
     var videoPath = path.resolve(files[videoId]);
+    var VFile = fs.createReadStream(videoPath);
     res.download(videoPath,files[videoId].split('/').slice(-1)[0]);
 })
 

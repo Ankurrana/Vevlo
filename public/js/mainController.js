@@ -31,11 +31,15 @@ app.controller('mainController',['$scope','$http',function($scope,$http){
 			video.play();
 		}
 		download(){
+			console.log("Your file should start Downloading!");
 			$http.get('download/' + this.id).then(function(data){
 				console.log('your download should be started!');
 			},function(err){
 				console.log(err);
 			})
+		}
+		downloadURL(){
+			return "download/"+this.id;
 		}
 	}
 
@@ -70,7 +74,7 @@ app.controller('mainController',['$scope','$http',function($scope,$http){
 		})
 
 		if(search.length >= 2) that.filteredMovies.sort(SortBasedOnSearchQuery(search));
-		$scope.movies = that.filteredMovies;
+			$scope.movies = that.filteredMovies;
 	}
 
 

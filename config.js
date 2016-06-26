@@ -4,7 +4,7 @@ var config = {
 		"F:\\Misc\\Movies",
 		"E:\\Songs",
 		"E:\\Ankur rana\\Data\\Music"
-	] , 
+		] , 
 	'mimes' : [
 		'.mp4',
 		'.mkv',
