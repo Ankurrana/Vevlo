@@ -19,7 +19,7 @@ function readRangeHeader(range, totalLength) {
     
     if (!isNaN(start) && isNaN(end)) {
         result.Start = start;
-        result.End = totalLength - 1;
+        result.End = totalLength - 1
     }
 
     if (isNaN(start) && !isNaN(end)) {
@@ -126,6 +126,7 @@ app.get('/',function(req,res){
 	var indexFile = path.resolve(__dirname,'public/index.html');
 	res.sendFile(indexFile);
 })
+
 app.use('/public',express.static(__dirname + "/public"));
 
 

@@ -10,9 +10,6 @@ app.controller('mainController',['$scope','$http',function($scope,$http){
 	$scope.searchQuery = undefined;
 	$scope.currentMovie = "";
 
-
-
-
 	class Movie{
 		constructor(id,name){
 			this.name = name;
@@ -28,6 +25,7 @@ app.controller('mainController',['$scope','$http',function($scope,$http){
 			var video = document.getElementById('mainPlayer');
 			video.src = "video/" + this.id;
 			$scope.currentMovie = this.name;
+			video
 			video.play();
 		}
 		download(){
@@ -76,8 +74,6 @@ app.controller('mainController',['$scope','$http',function($scope,$http){
 		if(search.length >= 2) that.filteredMovies.sort(SortBasedOnSearchQuery(search));
 			$scope.movies = that.filteredMovies;
 	}
-
-
 	init();
 }])	
 
